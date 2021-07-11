@@ -1,0 +1,128 @@
+<!-- Home page of our project taht uses base.html as a skeleton -->
+
+
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock title %} 
+
+{% load static %}
+
+{% block links %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+
+{% endblock links %}
+
+
+{% block content %}
+
+    {% if error %}
+        <h1 style="color: darkred">{{error}}</h1>
+    {% endif %}
+    <div style="font-size: 20px;margin-left: 250px;margin-top: 150px"></div>
+    <div id="myclassid">
+        {% for var in data %}
+        <!-- Running loop to get our outer list as var -->
+            <div style="font-size: 20px;margin-left: 250px;margin-top: 50px"></div>
+            {% for var2 in var %}
+            <!-- Running loop to get our inner dictionary stored in var as var2 -->
+                <div class="card" style="font-size: 20px;margin-left: 250px;">
+                    <div class="card-header"> <!-- Card Header for query -->
+                        <!-- Print User -->
+                        <div class="card-header" align="center">{{var2.User}}</div>
+                        {% if var2.Date %}
+                            <!-- Print Date -->
+                            <div style="font-size: 15px" align="center">{{var2.Date}}</div>
+                        {% endif %}
+                    </div>
+                    <div class="card-body"> <!-- Card Body for query -->
+                        {% if var2.Title %}
+                            <h3 class="card-title" align="center">{{var2.Title}}</h3>
+                        {% endif %}
+                        {% if var2.Query %}
+                            <p class="card-text" align="center" style="font-style: italic">{{var2.Query}}</p>
+                        {% endif %}
+                        {% if var2.Answer %}
+                            <div class="card-header"> <!-- Card Header for Answer -->
+                                Response By {{var2.user}}
+                            </div>
+                            <div class="card-header" style="background-color:#C3FBF8"> <!-- Card Body for Answer -->
+                                <div class="card-body">
+                                    <h4 class="card-title"></h4>
+                                    <p class="card-text">{{var2.Answer}}</p>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+            
+            <button value="Answer" class="btn var_btn" style="font-size: 20px" onclick="show()">Answer</button>
+            <!-- Button for Answer -->
+            <form name="Answer" method="POST" action="/answer/Answer/" > <!-- Form for Answer -->
+                {% csrf_token %}
+                <div style="display: none" class="hiddencard">  <!-- Hidden Card until answer button isn't hit-->
+                    <div class="card" style="font-size: 20px;margin-left: 250px;margin-top: 0px">
+                        <div class="card-body">
+                             <!-- QID for Answer -->
+                            <div style="font-size: 15px">
+                               <textarea name="Qid" style="border: none">{{var.0.Qid}}</textarea>
+                            </div>
+                            
+                            <h4 class="card-title">Comment Your Answer</h4>
+                            <div class="input-group form-group">
+                                <input type="date" class="form-control"  name="Date" >
+                            </div>
+
+                            <div class="input-group form-group">
+                                <textarea class="form-control" rows="4" cols="20"tyle="font-size: 20px" name="Answer" >Enter your answer here</textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" value="Submit" class="btn float-right var_btn" style="font-size: 20px">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        {% endfor %}
+    </div> 
+    <script>
+        function show()
+        {
+            var mycard=document.getElementById("myclassid");
+            if(mycard.getElementsByClassName("hiddencard")[0].style.display=='none')
+            {
+            mycard.getElementsByClassName("hiddencard")[0].style.display='block'
+            mycard.getElementsByClassName("hiddencard")[1].style.display='block'
+            mycard.getElementsByClassName("hiddencard")[2].style.display='block'
+            mycard.getElementsByClassName("hiddencard")[3].style.display='block'
+            mycard.getElementsByClassName("hiddencard")[4].style.display='block'
+            mycard.getElementsByClassName("hiddencard")[5].style.display='block'
+            mycard.getElementsByClassName("hiddencard")[6].style.display='block'
+            mycard.getElementsByClassName("hiddencard")[7].style.display='block'
+            mycard.getElementsByClassName("hiddencard")[8].style.display='block'
+            mycard.getElementsByClassName("hiddencard")[9].style.display='block'
+            mycard.getElementsByClassName("hiddencard")[10].style.display='block'
+            }
+            else if(mycard.getElementsByClassName("hiddencard")[0].style.display=='block')
+            {
+            mycard.getElementsByClassName("hiddencard")[0].style.display='none'
+            mycard.getElementsByClassName("hiddencard")[1].style.display='none'
+            mycard.getElementsByClassName("hiddencard")[2].style.display='none'
+            mycard.getElementsByClassName("hiddencard")[3].style.display='none'
+            mycard.getElementsByClassName("hiddencard")[4].style.display='none'
+            mycard.getElementsByClassName("hiddencard")[5].style.display='none'
+            mycard.getElementsByClassName("hiddencard")[6].style.display='none'
+            mycard.getElementsByClassName("hiddencard")[7].style.display='none'
+            mycard.getElementsByClassName("hiddencard")[8].style.display='none'
+            mycard.getElementsByClassName("hiddencard")[9].style.display='none'
+            mycard.getElementsByClassName("hiddencard")[10].style.display='none'
+           }
+           
+        }
+    </script>
+
+
+{% endblock content %}

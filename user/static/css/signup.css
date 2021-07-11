@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+html,body{
+height: 100%;
+font-family: 'Numans', sans-serif;
+}
+.container{
+  height: 100%;
+  align-content: center;
+}
+.card{
+  /* height: 450px; */
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 600px;
+  background-color: #FFF !important;
+}
+.input-group-prepend span{
+  width: 40px;
+  background-color: #FFC312;
+  color: black;
+  border:0 !important;
+}
+input:focus{
+  outline: 0 0 0 0  !important;
+  box-shadow: 0 0 0 0 !important;
+}
+.remember{
+	color: white;
+}
+.remember input
+{
+	width: 20px;
+	height: 20px;
+	margin-left: 15px;
+	margin-right: 5px;
+}
+.input-group-text img{
+  height:25px;
+  margin-left: 0px;
+  width: 30px;
+}
+h4{
+	font-size: 30px;
+	font-family: 'Marck Script', cursive;	
+}

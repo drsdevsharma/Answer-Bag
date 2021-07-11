@@ -1,0 +1,67 @@
+{% extends 'user_base.html' %}
+
+{% block title %} Sign Up{% endblock title %} 
+
+{% block Card_body %}
+
+    <form name="signup" method="POST" action="/user/signup/">
+        {% csrf_token %}
+        <div class="input-group form-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            <input type="text" class="form-control" name="firstname" placeholder="firstname" required="True">					
+        </div>
+        <div class="input-group form-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            <input type="text" class="form-control" name="lastname" placeholder="lastname" required="True">
+        </div>
+        <div class="input-group form-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="far fa-envelope"></i></span>
+            </div>
+            <input type="email" class="form-control" name="email" placeholder="email" required="True">
+        </div>
+        <div class="input-group form-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-mobile-alt"></i></span>
+            </div>
+            <input type="number" class="form-control" name="phno" placeholder="mobile number" required="True">
+        </div>
+        <div class="input-group form-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-key"></i></span>
+            </div>
+            <input type="password" class="form-control" name="password" placeholder="password" required="True">
+        </div>
+        <div class="input-group form-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-key"></i></span>
+            </div>
+            <input type="password" class="form-control" name="cpassword" placeholder="Confirm password" required="True">
+        </div>
+        <div class="row align-items-center remember">
+            <input type="checkbox" required="True"><a href="#">i agree all T&C</a>
+        </div>
+        {% if error %}
+            <h4 style="color: red;">{{ error }}</h4>
+        {% endif %}
+        <div class="form-group">
+            <input type="submit" value="Sign up" class="btn float-right btn-outline-danger">
+        </div>
+    </form>
+
+
+{% endblock Card_body %}
+
+{% block Card_footer %}
+
+    <div class="card-footer">
+        <div class="d-flex justify-content-center links">
+        Already have an account?<a href="/user/login/">Login</a>
+        </div>
+    </div>
+    
+{% endblock Card_footer %}

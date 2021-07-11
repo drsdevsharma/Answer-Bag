@@ -1,0 +1,30 @@
+{% extends 'user_base.html' %}
+
+{% block title %}New password{% endblock title %}
+
+
+{% block Card_body %}
+
+    <form name="Forget password" method="POST" action="/user/newpass/">
+        {% csrf_token %}
+        <div class="input-group form-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-key"></i></span>
+            </div>
+            <input type="password" class="form-control" name="password" placeholder="password" required="True">
+        </div>
+        <div class="input-group form-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-key"></i></span>
+            </div>
+            <input type="password" class="form-control" name="cpassword" placeholder="Confirm password" required="True">
+        </div>
+        {% if error %}
+            <h4 style="color: red;">{{ error }}</h4>
+        {% endif %}
+        <div class="form-group">
+            <input type="submit" value="Change" class="btn float-right btn-outline-danger">
+        </div>
+    </form>
+
+{% endblock Card_body %}

@@ -1,0 +1,24 @@
+{% extends 'user_base.html' %}
+
+{% block title %} Verify {% endblock title %}
+
+{% load static %}
+
+{% block Card_body %}
+    <form name="login" method="POST" action="/user/verify/">
+        {% csrf_token %}
+        <div class="input-group form-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><img src="{% static 'images/otp.png' %}"></span>
+            </div>
+            <input type="text" class="form-control d-flex justify-content-center" name="otp" placeholder="otp" required="True">					
+        </div>
+        {% if error %}
+            <h4 style="color: red;">{{ error }}</h4>
+        {% endif %}
+        <div class="form-group">
+            <input type="submit" value="Verify" class="btn float-right btn-outline-danger">
+        </div>
+    </form>
+{% endblock Card_body %}
+

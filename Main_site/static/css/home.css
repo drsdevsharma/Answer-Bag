@@ -1,0 +1,12 @@
+.var_btn{
+    color: black;
+    background: white;
+    font-size: 20px;
+    border-color:black;
+    width: 100px;
+    margin-left: 250px;
+}
+.var_btn:hover{
+    color:crimson;
+    box-shadow:0 0 20px #000;
+}

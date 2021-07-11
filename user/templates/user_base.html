@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}{% endblock title %}
+
+{% load static %}
+
+{% block links %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}">    
+
+{% endblock links %}
+
+{% block content %}
+
+    <div class="d-flex justify-content-center ">
+        <div class="card">
+            <div class="card-body">
+                {% block Card_body %}{% endblock Card_body %}
+            </div>
+            {% block Card_footer %}{% endblock Card_footer %}
+        </div>
+    </div>
+
+{% endblock content %}
